@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-test-java
+  namespace: default
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java
+  template:
+    metadata:
+      labels:
+        app: java
+    spec:
+      containers:
+        - name: java
+          image: 162411490995.dkr.ecr.ap-south-1.amazonaws.com/java-image:2
+          ports: 
+            - containerPort: 8080
+        # - name: nodejs
+        #   image: 162411490995.dkr.ecr.ap-south-1.amazonaws.com/nodejs-image:latest
+        #   ports: 
+        #     - containerPort: 3000
